@@ -125,14 +125,6 @@ export default function LoginPage() {
           Criar conta
         </Link>
       </p>
-
-      <div className="mt-6 rounded-xl border border-border bg-background-elevated/40 p-3 text-xs text-foreground-subtle">
-        <p className="font-medium text-foreground-muted">Demo</p>
-        <p className="mt-1 leading-relaxed">
-          Use <code className="text-brand-300">muriloalvim16@gmail.com</code> /{" "}
-          <code className="text-brand-300">Demo1234</code> ou crie uma conta nova.
-        </p>
-      </div>
     </div>
   );
 }

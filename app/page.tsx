@@ -96,14 +96,14 @@ export default function LandingPage() {
                 Começar gratuitamente
               </Button>
             </Link>
-            <Link href="/dashboard">
+            <Link href="/login">
               <Button size="lg" variant="secondary">
-                Ver demo ao vivo
+                Já tenho conta
               </Button>
             </Link>
           </div>
           <p className="mt-4 text-xs text-foreground-subtle">
-            Sem cartão · 14 dias grátis · Setup em &lt; 10 minutos
+            Sem cartão · Setup em &lt; 10 minutos
           </p>
         </section>
 
@@ -182,9 +182,9 @@ export default function LandingPage() {
                   Criar conta grátis
                 </Button>
               </Link>
-              <Link href="/dashboard">
+              <Link href="/login">
                 <Button size="lg" variant="outline">
-                  Explorar dashboard
+                  Entrar
                 </Button>
               </Link>
             </div>
