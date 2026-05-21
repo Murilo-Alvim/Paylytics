@@ -10,7 +10,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?logo=postgresql&logoColor=white)](https://neon.tech)
 [![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-### 🌐 [Acesse o live demo →](https://paylytics-two.vercel.app)
+### 🌐 [Acesse o live demo →](https://paylytics-nine.vercel.app)
 
 </div>
 
