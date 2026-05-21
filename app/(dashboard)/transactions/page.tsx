@@ -1,5 +1,3 @@
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/page-header";
 import { TransactionsTable } from "@/components/transactions/transactions-table";
 import { getAllTransactions } from "@/lib/data/transactions";
@@ -15,11 +13,6 @@ export default async function TransactionsPage() {
       <PageHeader
         title="Transações"
         description="Pesquise, filtre e acompanhe cada transação processada."
-        actions={
-          <Button size="sm" icon={<Plus className="h-4 w-4" />}>
-            Nova cobrança
-          </Button>
-        }
       />
       <TransactionsTable transactions={transactions} />
     </>

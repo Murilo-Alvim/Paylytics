@@ -1,4 +1,4 @@
-import { Download, Filter } from "lucide-react";
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/layout/page-header";
@@ -27,14 +27,11 @@ export default async function DashboardPage() {
         title="Visão geral"
         description="Acompanhe seus indicadores operacionais em tempo real."
         actions={
-          <>
-            <Button variant="secondary" size="sm" icon={<Filter className="h-4 w-4" />}>
-              Filtros
-            </Button>
+          <a href="/api/transactions/export" download>
             <Button size="sm" icon={<Download className="h-4 w-4" />}>
               Exportar
             </Button>
-          </>
+          </a>
         }
       />
 

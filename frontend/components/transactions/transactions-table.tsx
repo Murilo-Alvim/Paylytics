@@ -3,13 +3,7 @@
 import { useMemo, useState } from "react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Search,
-  SlidersHorizontal,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, Search } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input, Select } from "@/components/ui/input";
@@ -103,17 +97,11 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
               </option>
             ))}
           </Select>
-          <Button
-            variant="secondary"
-            size="md"
-            icon={<SlidersHorizontal className="h-4 w-4" />}
-            className="hidden sm:inline-flex"
-          >
-            Avançado
-          </Button>
-          <Button size="md" icon={<Download className="h-4 w-4" />}>
-            Exportar
-          </Button>
+          <a href="/api/transactions/export" download>
+            <Button size="md" icon={<Download className="h-4 w-4" />}>
+              Exportar
+            </Button>
+          </a>
         </div>
       </div>
 

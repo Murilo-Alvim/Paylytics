@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/layout/page-header";
 import { PeriodFilter } from "@/components/analytics/period-filter";
@@ -35,24 +35,18 @@ export default async function AnalyticsPage() {
       {/* Hero insight banner */}
       <div className="relative mt-6 overflow-hidden rounded-2xl border border-brand-500/20 bg-gradient-to-br from-brand-500/15 via-background-surface to-background-surface p-6">
         <div className="absolute -top-12 right-0 h-40 w-40 rounded-full bg-brand-500/30 blur-3xl" aria-hidden />
-        <div className="relative flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 px-2.5 py-1 text-xs font-medium text-brand-300">
-              <Sparkles className="h-3 w-3" />
-              Insight do mês
-            </span>
-            <h2 className="mt-3 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
-              Você processou <span className="text-gradient">18% mais transações</span> neste mês.
-            </h2>
-            <p className="mt-1 max-w-2xl text-sm text-foreground-muted">
-              O crescimento foi puxado por PIX (+23%) e por uma redução de 8.4% em chargebacks
-              após o ajuste das regras antifraude na semana passada.
-            </p>
-          </div>
-          <button className="inline-flex items-center gap-1.5 self-start rounded-xl border border-brand-500/30 bg-brand-500/10 px-3 py-2 text-xs font-medium text-brand-200 hover:bg-brand-500/20 sm:self-auto">
-            Ver relatório completo
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </button>
+        <div className="relative">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 px-2.5 py-1 text-xs font-medium text-brand-300">
+            <Sparkles className="h-3 w-3" />
+            Insight do mês
+          </span>
+          <h2 className="mt-3 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+            Você processou <span className="text-gradient">18% mais transações</span> neste mês.
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-foreground-muted">
+            O crescimento foi puxado por PIX (+23%) e por uma redução de 8.4% em chargebacks
+            após o ajuste das regras antifraude na semana passada.
+          </p>
         </div>
       </div>
 

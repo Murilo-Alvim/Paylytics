@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, LogOut, Menu, Search } from "lucide-react";
+import { LogOut, Menu, Search } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import type { SessionUser } from "@/types";
@@ -31,16 +31,7 @@ export function Topbar({ onMenuClick, user, onSignOut }: TopbarProps) {
       </div>
 
       <div className="ml-auto flex items-center gap-2">
-        <button
-          type="button"
-          className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border text-foreground-muted hover:border-border-strong hover:text-foreground focus-ring"
-          aria-label="Notificações"
-        >
-          <Bell className="h-4 w-4" />
-          <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-brand-400" />
-        </button>
-
-        <div className="ml-1 flex items-center gap-3 rounded-xl border border-border px-2.5 py-1.5">
+        <div className="flex items-center gap-3 rounded-xl border border-border px-2.5 py-1.5">
           <Avatar name={user.name} src={user.avatarUrl} size="sm" />
           <div className="hidden text-xs leading-tight md:block">
             <p className="font-medium text-foreground">{user.name}</p>
