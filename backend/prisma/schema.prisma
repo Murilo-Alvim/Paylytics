@@ -1,0 +1,75 @@
+// Paylytics — Prisma schema
+// PostgreSQL (Neon) — see .env.example for DATABASE_URL format.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum TransactionStatus {
+  APPROVED
+  PENDING
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  PIX
+  BOLETO
+  BANK_TRANSFER
+  WALLET
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  avatarUrl String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Transaction {
+  id            String            @id @default(cuid())
+  amount        Decimal           @db.Decimal(12, 2)
+  currency      String            @default("BRL")
+  status        TransactionStatus
+  paymentMethod PaymentMethod
+  customerName  String
+  customerEmail String?
+  country       String
+  cardBrand     String?
+  description   String?
+  createdAt     DateTime          @default(now())
+
+  @@index([status])
+  @@index([paymentMethod])
+  @@index([createdAt])
+  @@map("transactions")
+}
+
+model Analytics {
+  id              String   @id @default(cuid())
+  periodStart     DateTime
+  periodEnd       DateTime
+  revenue         Decimal  @db.Decimal(14, 2)
+  approvalRate    Float
+  chargebacks     Int
+  processedVolume Decimal  @db.Decimal(14, 2)
+  transactionCount Int
+  createdAt       DateTime @default(now())
+
+  @@index([periodStart])
+  @@map("analytics")
+}

@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paylytics-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b63f5"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#paylytics-bg)"/>
+  <rect x="7" y="18" width="4" height="8" rx="1" fill="white" fill-opacity="0.75"/>
+  <rect x="14" y="13" width="4" height="13" rx="1" fill="white" fill-opacity="0.9"/>
+  <rect x="21" y="8" width="4" height="18" rx="1" fill="white"/>
+</svg>
