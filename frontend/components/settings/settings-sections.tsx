@@ -40,7 +40,7 @@ export function SettingsSections({ user }: { user: SessionUser }) {
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[220px,1fr]">
-      <nav className="space-y-1">
+      <nav className="-mx-4 flex gap-2 overflow-x-auto whitespace-nowrap px-4 pb-2 sm:mx-0 sm:px-0 lg:flex-col lg:space-y-1 lg:gap-0 lg:overflow-visible lg:whitespace-normal lg:pb-0">
         {TABS.map((t) => {
           const Icon = t.icon;
           const active = tab === t.id;
@@ -49,7 +49,7 @@ export function SettingsSections({ user }: { user: SessionUser }) {
               key={t.id}
               onClick={() => setTab(t.id)}
               className={cn(
-                "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition focus-ring",
+                "flex shrink-0 items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition focus-ring lg:w-full lg:gap-3 lg:py-2.5",
                 active
                   ? "border border-brand-500/20 bg-brand-500/10 text-foreground"
                   : "border border-transparent text-foreground-muted hover:bg-white/[0.04] hover:text-foreground",

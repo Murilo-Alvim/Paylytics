@@ -71,7 +71,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
 
   return (
     <Card className="p-0">
-      <div className="flex flex-col gap-3 p-5 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-3 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between">
         <Input
           placeholder="Buscar por cliente, e-mail, ID ou país…"
           leftIcon={<Search className="h-4 w-4" />}
@@ -83,7 +83,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
           <Select
             value={status}
             onChange={(e) => onFilterChange(setStatus, e.target.value as typeof status)}
-            className="w-40"
+            className="min-w-0 flex-1 sm:w-40 sm:flex-none"
           >
             <option value="ALL">Todos status</option>
             <option value="APPROVED">Aprovadas</option>
@@ -94,7 +94,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
           <Select
             value={method}
             onChange={(e) => onFilterChange(setMethod, e.target.value as typeof method)}
-            className="w-48"
+            className="min-w-0 flex-1 sm:w-48 sm:flex-none"
           >
             <option value="ALL">Todos métodos</option>
             {(Object.keys(METHOD_LABEL) as PaymentMethod[]).map((m) => (
@@ -103,7 +103,12 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
               </option>
             ))}
           </Select>
-          <Button variant="secondary" size="md" icon={<SlidersHorizontal className="h-4 w-4" />}>
+          <Button
+            variant="secondary"
+            size="md"
+            icon={<SlidersHorizontal className="h-4 w-4" />}
+            className="hidden sm:inline-flex"
+          >
             Avançado
           </Button>
           <Button size="md" icon={<Download className="h-4 w-4" />}>
@@ -115,10 +120,10 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
       <Table>
         <THead>
           <TR className="hover:bg-transparent">
-            <TH>Transaction ID</TH>
+            <TH className="hidden sm:table-cell">Transaction ID</TH>
             <TH>Cliente</TH>
             <TH>Valor</TH>
-            <TH>Método</TH>
+            <TH className="hidden sm:table-cell">Método</TH>
             <TH>Status</TH>
             <TH className="hidden md:table-cell">País</TH>
             <TH className="hidden md:table-cell">Data</TH>
@@ -141,7 +146,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
 
           {!loading && pageItems.length === 0 && (
             <TR>
-              <TD colSpan={7} className="py-16 text-center text-foreground-subtle">
+              <TD colSpan={7} className="py-12 text-center text-foreground-subtle sm:py-16">
                 Nenhuma transação encontrada com esses filtros.
               </TD>
             </TR>
@@ -150,7 +155,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
           {!loading &&
             pageItems.map((t) => (
               <TR key={t.id}>
-                <TD>
+                <TD className="hidden sm:table-cell">
                   <span className="font-mono text-xs text-foreground-muted">
                     {t.id}
                   </span>
@@ -171,7 +176,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
                 <TD className="font-medium tabular-nums text-foreground">
                   {formatCurrency(t.amount, t.currency)}
                 </TD>
-                <TD>
+                <TD className="hidden sm:table-cell">
                   <span className="text-xs text-foreground-muted">
                     {METHOD_LABEL[t.paymentMethod]}
                     {t.cardBrand && (
