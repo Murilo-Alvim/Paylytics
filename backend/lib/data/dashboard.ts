@@ -8,7 +8,37 @@ import type {
   PaymentMethodShare,
   RevenuePoint,
 } from "@/types";
-import type { PaymentMethod } from "@prisma/client";
+import type { PaymentMethod, Prisma } from "@prisma/client";
+
+export const PERIODS = ["7d", "30d", "90d", "12m", "YTD"] as const;
+export type Period = (typeof PERIODS)[number];
+
+const PERIOD_LABEL: Record<Period, string> = {
+  "7d": "últimos 7 dias",
+  "30d": "últimos 30 dias",
+  "90d": "últimos 90 dias",
+  "12m": "últimos 12 meses",
+  YTD: "ano até hoje",
+};
+
+function startOfPeriod(period: Period): Date {
+  const now = new Date();
+  switch (period) {
+    case "7d":
+      return new Date(now.getTime() - 7 * 86_400_000);
+    case "30d":
+      return new Date(now.getTime() - 30 * 86_400_000);
+    case "90d":
+      return new Date(now.getTime() - 90 * 86_400_000);
+    case "12m": {
+      const d = new Date(now);
+      d.setMonth(d.getMonth() - 12);
+      return d;
+    }
+    case "YTD":
+      return new Date(now.getFullYear(), 0, 1);
+  }
+}
 
 const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = {
   CREDIT_CARD: "Cartão de Crédito",
@@ -67,9 +97,15 @@ export interface DashboardData {
 }
 
 export const getDashboardData = unstable_cache(
-  async (): Promise<DashboardData> => {
+  async (opts?: { period?: Period }): Promise<DashboardData> => {
+  const period = opts?.period;
+  const startDate = period ? startOfPeriod(period) : null;
+  const txWhere: Prisma.TransactionWhereInput = startDate
+    ? { createdAt: { gte: startDate } }
+    : {};
+
   const [rawTxs, analyticsRows] = await Promise.all([
-    prisma.transaction.findMany({ orderBy: { createdAt: "desc" } }),
+    prisma.transaction.findMany({ where: txWhere, orderBy: { createdAt: "desc" } }),
     prisma.analytics.findMany({ orderBy: { periodStart: "asc" }, take: 12 }),
   ]);
 
@@ -100,14 +136,14 @@ export const getDashboardData = unstable_cache(
       value: BRL.format(totalVolume),
       delta: 12.4,
       trend: "up",
-      helper: "vs. mês anterior",
+      helper: period ? PERIOD_LABEL[period] : "vs. mês anterior",
     },
     {
       label: "Taxa de Aprovação",
       value: `${approvalRate.toFixed(1)}%`,
       delta: 1.8,
       trend: "up",
-      helper: "média de 30 dias",
+      helper: period ? PERIOD_LABEL[period] : "média de 30 dias",
     },
     {
       label: "Receita Mensal",

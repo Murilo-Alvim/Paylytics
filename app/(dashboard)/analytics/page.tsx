@@ -9,13 +9,25 @@ import { RevenueAreaChart } from "@/components/charts/area-chart";
 import { MonthlyTrendsChart } from "@/components/charts/monthly-trends-chart";
 import { ApprovalChart } from "@/components/charts/approval-chart";
 import { PaymentMethodsChart } from "@/components/charts/payment-methods-chart";
-import { getDashboardData } from "@/lib/data/dashboard";
+import { getDashboardData, PERIODS, type Period } from "@/lib/data/dashboard";
 
 export const metadata = { title: "Analytics" };
 export const dynamic = "force-dynamic";
 
-export default async function AnalyticsPage() {
-  const data = await getDashboardData();
+function parsePeriod(value: string | string[] | undefined): Period {
+  const v = Array.isArray(value) ? value[0] : value;
+  return (PERIODS as readonly string[]).includes(v ?? "")
+    ? (v as Period)
+    : "30d";
+}
+
+export default async function AnalyticsPage({
+  searchParams,
+}: {
+  searchParams: { period?: string | string[] };
+}) {
+  const period = parsePeriod(searchParams.period);
+  const data = await getDashboardData({ period });
   const analyticalKpis = data.kpis.slice(0, 4);
 
   return (
