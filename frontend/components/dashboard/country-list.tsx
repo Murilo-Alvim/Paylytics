@@ -16,7 +16,7 @@ export function CountryList({ countries }: { countries: CountryShare[] }) {
               {formatCurrency(c.revenue)}
             </span>
           </div>
-          <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.04]">
+          <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-foreground/[0.04]">
             <div
               className="h-full rounded-full bg-gradient-to-r from-brand-500 to-info"
               style={{ width: `${(c.revenue / max) * 100}%` }}

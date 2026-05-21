@@ -36,7 +36,7 @@ export function KpiCard({ kpi, className }: KpiCardProps) {
             "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium",
             positive && "border-success/20 bg-success-soft text-success",
             negative && "border-danger/20 bg-danger-soft text-danger",
-            !positive && !negative && "border-border bg-white/[0.04] text-foreground-muted",
+            !positive && !negative && "border-border bg-foreground/[0.04] text-foreground-muted",
           )}
         >
           <Icon className="h-3 w-3" strokeWidth={2.5} />

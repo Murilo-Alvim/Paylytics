@@ -10,32 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: "#05070d",
-          surface: "#0a0e1a",
-          elevated: "#0f1525",
-          muted: "#141b2e",
+          DEFAULT: "rgb(var(--bg-default) / <alpha-value>)",
+          surface: "rgb(var(--bg-surface) / <alpha-value>)",
+          elevated: "rgb(var(--bg-elevated) / <alpha-value>)",
+          muted: "rgb(var(--bg-muted) / <alpha-value>)",
         },
         border: {
-          DEFAULT: "rgba(255, 255, 255, 0.06)",
-          strong: "rgba(255, 255, 255, 0.10)",
+          DEFAULT: "rgb(var(--border-default))",
+          strong: "rgb(var(--border-strong))",
         },
         foreground: {
-          DEFAULT: "#e8ecf4",
-          muted: "#8b94a8",
-          subtle: "#5a6478",
+          DEFAULT: "rgb(var(--fg-default) / <alpha-value>)",
+          muted: "rgb(var(--fg-muted) / <alpha-value>)",
+          subtle: "rgb(var(--fg-subtle) / <alpha-value>)",
         },
         brand: {
-          50: "#eef4ff",
-          100: "#dae6ff",
-          200: "#bcd2ff",
-          300: "#8eb2ff",
-          400: "#5a87ff",
-          500: "#3b63f5",
-          600: "#2647e0",
-          700: "#1f37b8",
-          800: "#1d3093",
-          900: "#1e2d75",
-          950: "#161d47",
+          50: "#f3f4f6",
+          100: "#e2e5ea",
+          200: "#c7ccd5",
+          300: "#9ea6b5",
+          400: "#6e788c",
+          500: "#4c5566",
+          600: "#3a4253",
+          700: "#2e3543",
+          800: "#252a36",
+          900: "#1d212b",
+          950: "#0f1218",
         },
         success: {
           DEFAULT: "#10b981",
@@ -60,12 +60,12 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-fade":
-          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 99, 245, 0.15), transparent)",
+          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(110, 120, 140, 0.18), transparent)",
         "brand-glow":
-          "radial-gradient(circle at top left, rgba(59, 99, 245, 0.25), transparent 50%)",
+          "radial-gradient(circle at top left, rgba(110, 120, 140, 0.22), transparent 50%)",
       },
       boxShadow: {
-        glow: "0 0 40px -10px rgba(59, 99, 245, 0.4)",
+        glow: "0 0 40px -10px rgba(110, 120, 140, 0.45)",
         card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 32px -12px rgba(0,0,0,0.5)",
       },
       animation: {

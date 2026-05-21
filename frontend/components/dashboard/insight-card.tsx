@@ -12,7 +12,7 @@ const tones = {
     icon: ArrowDownRight,
   },
   neutral: {
-    badge: "border-border bg-white/[0.05] text-foreground-muted",
+    badge: "border-border bg-foreground/[0.05] text-foreground-muted",
     icon: Sparkles,
   },
 } as const;

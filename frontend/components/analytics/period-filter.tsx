@@ -28,7 +28,7 @@ export function PeriodFilter({
             "rounded-lg px-3 py-1.5 text-xs font-medium transition focus-ring",
             active === p
               ? "bg-brand-500/15 text-foreground border border-brand-500/30"
-              : "text-foreground-muted hover:bg-white/[0.04] border border-transparent",
+              : "text-foreground-muted hover:bg-foreground/[0.04] border border-transparent",
           )}
         >
           {p}

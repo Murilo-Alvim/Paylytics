@@ -50,7 +50,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <Logo />
           </Link>
           <button
-            className="rounded-md p-1 text-foreground-muted hover:bg-white/[0.06] hover:text-foreground lg:hidden"
+            className="rounded-md p-1 text-foreground-muted hover:bg-foreground/[0.06] hover:text-foreground lg:hidden"
             onClick={onClose}
             aria-label="Fechar menu"
           >
@@ -75,7 +75,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition focus-ring",
                   active
                     ? "bg-brand-500/10 text-foreground border border-brand-500/20"
-                    : "text-foreground-muted hover:bg-white/[0.04] hover:text-foreground",
+                    : "text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground",
                 )}
               >
                 <Icon
@@ -109,7 +109,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="border-t border-border px-3 py-3">
           <Link
             href="#"
-            className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs text-foreground-muted hover:bg-white/[0.04] hover:text-foreground"
+            className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground"
           >
             <LifeBuoy className="h-4 w-4" /> Suporte e ajuda
           </Link>

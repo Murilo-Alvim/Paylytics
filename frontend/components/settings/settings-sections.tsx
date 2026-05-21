@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import {
   Bell,
   Lock,
@@ -30,7 +31,7 @@ const TABS: { id: Tab; label: string; icon: typeof User }[] = [
 
 export function SettingsSections({ user }: { user: SessionUser }) {
   const [tab, setTab] = useState<Tab>("profile");
-  const [theme, setTheme] = useState<"dark" | "light" | "system">("dark");
+  const { theme, setTheme } = useTheme();
   const [notify, setNotify] = useState({
     transactionAlerts: true,
     weeklyReport: true,
@@ -52,7 +53,7 @@ export function SettingsSections({ user }: { user: SessionUser }) {
                 "flex shrink-0 items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition focus-ring lg:w-full lg:gap-3 lg:py-2.5",
                 active
                   ? "border border-brand-500/20 bg-brand-500/10 text-foreground"
-                  : "border border-transparent text-foreground-muted hover:bg-white/[0.04] hover:text-foreground",
+                  : "border border-transparent text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground",
               )}
             >
               <Icon className="h-4 w-4" />
@@ -160,8 +161,8 @@ export function SettingsSections({ user }: { user: SessionUser }) {
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {(
                 [
-                  { id: "dark", label: "Dark", icon: Moon, hint: "Recomendado" },
-                  { id: "light", label: "Light", icon: Sun, hint: "Em breve" },
+                  { id: "dark", label: "Dark", icon: Moon, hint: "Padrão" },
+                  { id: "light", label: "Light", icon: Sun, hint: "Tema claro" },
                   { id: "system", label: "Sistema", icon: Palette, hint: "Segue OS" },
                 ] as const
               ).map((opt) => {
@@ -315,7 +316,7 @@ function Toggle({
         "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition focus-ring",
         value
           ? "border-brand-500/30 bg-brand-500"
-          : "border-border bg-white/[0.06]",
+          : "border-border bg-foreground/[0.06]",
       )}
     >
       <span

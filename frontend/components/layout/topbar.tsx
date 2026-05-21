@@ -16,7 +16,7 @@ export function Topbar({ onMenuClick, user, onSignOut }: TopbarProps) {
     <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border bg-background/70 px-4 backdrop-blur-xl lg:px-6">
       <button
         type="button"
-        className="rounded-lg p-2 text-foreground-muted hover:bg-white/[0.04] hover:text-foreground lg:hidden focus-ring"
+        className="rounded-lg p-2 text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground lg:hidden focus-ring"
         onClick={onMenuClick}
         aria-label="Abrir menu"
       >
@@ -49,7 +49,7 @@ export function Topbar({ onMenuClick, user, onSignOut }: TopbarProps) {
           <button
             type="button"
             onClick={onSignOut}
-            className="rounded-md p-1 text-foreground-muted hover:bg-white/[0.04] hover:text-foreground focus-ring"
+            className="rounded-md p-1 text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground focus-ring"
             aria-label="Sair"
           >
             <LogOut className="h-4 w-4" />
