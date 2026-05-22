@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LandingNav } from "@/components/landing/landing-nav";
+import { SectionNav } from "@/components/landing/section-nav";
 
 const TRUSTED_BY = ["Nuvi", "Capital Pay", "Lume Fintech", "Onda", "Praia", "Stark"];
 
@@ -94,6 +95,7 @@ export default function LandingPage() {
       />
 
       <LandingNav />
+      <SectionNav />
 
       <main>
         {/* HERO */}
@@ -489,7 +491,7 @@ export default function LandingPage() {
         </section>
 
         {/* FEATURE 2 — AI Insights (reversed layout) */}
-        <section className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
+        <section id="insights" className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Visual first on lg */}
             <div className="relative lg:order-1">
@@ -578,7 +580,7 @@ export default function LandingPage() {
         </section>
 
         {/* FEATURE 3 — Multi-país */}
-        <section className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
+        <section id="global" className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/30 bg-warning/10 px-2.5 py-1 text-xs font-medium text-warning">
@@ -688,7 +690,7 @@ export default function LandingPage() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
+        <section id="steps" className="mx-auto max-w-7xl px-4 py-24 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-medium uppercase tracking-widest text-brand-300">
               Como funciona
