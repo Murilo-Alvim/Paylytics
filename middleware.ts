@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/auth/jwt";
 
 const PROTECTED_PREFIXES = ["/dashboard", "/analytics", "/transactions", "/settings"];
-const AUTH_PAGES = ["/login", "/signup"];
+const REDIRECT_IF_AUTHED = ["/login"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (AUTH_PAGES.includes(pathname) && isAuthed) {
+  if (REDIRECT_IF_AUTHED.includes(pathname) && isAuthed) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     url.search = "";
