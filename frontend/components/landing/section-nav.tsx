@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,8 +15,11 @@ const SECTIONS = [
   { id: "cta", label: "Começar" },
 ];
 
+const CLICK_LOCK_MS = 900;
+
 export function SectionNav() {
   const [active, setActive] = useState<string>("top");
+  const lockUntilRef = useRef<number>(0);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -29,6 +32,9 @@ export function SectionNav() {
         ([entry]) => {
           if (entry.isIntersecting) visible.add(s.id);
           else visible.delete(s.id);
+
+          if (Date.now() < lockUntilRef.current) return;
+
           const ordered = SECTIONS.map((x) => x.id).filter((id) =>
             visible.has(id),
           );
@@ -42,6 +48,11 @@ export function SectionNav() {
 
     return () => observers.forEach((o) => o.disconnect());
   }, []);
+
+  function handleClick(id: string) {
+    setActive(id);
+    lockUntilRef.current = Date.now() + CLICK_LOCK_MS;
+  }
 
   return (
     <nav
@@ -65,6 +76,7 @@ export function SectionNav() {
                 <a
                   href={`#${s.id}`}
                   aria-current={isActive ? "true" : undefined}
+                  onClick={() => handleClick(s.id)}
                   className={cn(
                     "group flex items-center gap-3 rounded-lg px-2.5 py-1.5 text-xs transition-all focus-ring",
                     isActive
