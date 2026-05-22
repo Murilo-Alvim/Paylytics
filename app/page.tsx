@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { LandingNav } from "@/components/landing/landing-nav";
 import { SectionNav } from "@/components/landing/section-nav";
+import { StickySignupCTA } from "@/components/landing/sticky-signup";
 
 const TRUSTED_BY = ["Nuvi", "Capital Pay", "Lume Fintech", "Onda", "Praia", "Stark"];
 
@@ -96,6 +97,7 @@ export default function LandingPage() {
 
       <LandingNav />
       <SectionNav />
+      <StickySignupCTA />
 
       <main>
         {/* HERO */}
@@ -193,12 +195,25 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <p
-            className="animate-slide-up mt-5 text-xs text-foreground-subtle"
+          <div
+            className="animate-slide-up mt-6 flex flex-wrap items-center justify-center gap-2"
             style={{ animationDelay: "400ms", animationFillMode: "both" }}
           >
-            Sem cartão · Setup em &lt; 10 minutos
-          </p>
+            {[
+              "Sem cartão",
+              "Setup em < 10 min",
+              "Acesso completo",
+              "Cancele quando quiser",
+            ].map((b) => (
+              <span
+                key={b}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background-surface/60 px-3 py-1 text-xs text-foreground-muted backdrop-blur"
+              >
+                <CheckCircle2 className="h-3 w-3 text-success" />
+                {b}
+              </span>
+            ))}
+          </div>
 
           {/* Hero visual: dashboard preview mockup */}
           <div className="relative mx-auto mt-16 max-w-6xl lg:mt-20">
@@ -724,6 +739,64 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* WHAT YOU GET */}
+        <section className="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-medium uppercase tracking-widest text-brand-300">
+              O que você ganha
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Tudo desbloqueado na hora que você cria a conta.
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Zap,
+                title: "Dashboard em tempo real",
+                description:
+                  "KPIs, gráficos e alertas atualizando ao vivo. Sem refresh, sem espera.",
+              },
+              {
+                icon: Sparkles,
+                title: "Insights por IA",
+                description:
+                  "Recomendações acionáveis a partir dos seus próprios dados de pagamento.",
+              },
+              {
+                icon: Globe2,
+                title: "Multi-moeda nativo",
+                description:
+                  "Conciliação automática em BRL, USD, EUR e GBP. Relatórios consolidados.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Sem cartão, sem trial",
+                description:
+                  "Acesso completo desde o primeiro segundo. Cancela quando quiser.",
+              },
+            ].map((b) => {
+              const Icon = b.icon;
+              return (
+                <div
+                  key={b.title}
+                  className="rounded-2xl border border-border bg-background-surface/60 p-6 backdrop-blur transition hover:-translate-y-0.5 hover:border-brand-500/40"
+                >
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/30 bg-brand-500/10 text-brand-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    {b.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
+                    {b.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
         {/* FINAL CTA */}
         <section id="cta" className="mx-auto max-w-7xl px-4 pb-24 lg:px-6">
           <div className="relative overflow-hidden rounded-3xl border border-brand-500/20 bg-gradient-to-br from-brand-500/15 via-background-surface to-background-surface p-10 text-center sm:p-16">
@@ -740,16 +813,37 @@ export default function LandingPage() {
               Pronto pra começar
             </span>
             <h2 className="relative mt-5 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              Enxergue seu fluxo financeiro{" "}
-              <span className="text-gradient">com clareza.</span>
+              Comece agora.{" "}
+              <span className="text-gradient">
+                Enxergue seu fluxo em segundos.
+              </span>
             </h2>
             <p className="relative mx-auto mt-4 max-w-xl text-foreground-muted">
-              Crie sua conta em menos de 1 minuto. Sem cartão, sem fricção.
+              Crie sua conta em menos de 1 minuto e explore o painel completo —
+              dashboard, analytics, insights e exportação Excel.
             </p>
+
+            <div className="relative mt-6 flex flex-wrap items-center justify-center gap-2">
+              {[
+                "Sem cartão",
+                "Acesso completo",
+                "Setup em < 10 min",
+              ].map((b) => (
+                <span
+                  key={b}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background-surface/60 px-3 py-1 text-xs text-foreground-muted backdrop-blur"
+                >
+                  <CheckCircle2 className="h-3 w-3 text-success" />
+                  {b}
+                </span>
+              ))}
+            </div>
+
             <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/signup">
                 <Button
                   size="lg"
+                  className="cta-glow"
                   icon={<ArrowRight className="h-4 w-4" />}
                   iconPosition="right"
                 >
