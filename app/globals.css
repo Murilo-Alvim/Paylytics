@@ -140,3 +140,30 @@
     background-color: rgb(var(--hover-tint) / 0.08);
   }
 }
+
+@keyframes bar-pulse {
+  0%, 100% {
+    transform: scaleY(0.35);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.loading-bar {
+  transform-origin: center bottom;
+  transform-box: fill-box;
+  animation: bar-pulse 1.2s ease-in-out infinite;
+}
+.loading-bar.delay-1 { animation-delay: 0.15s; }
+.loading-bar.delay-2 { animation-delay: 0.3s; }
+
+@keyframes orbit-glow {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.8; transform: translate(-50%, -50%) scale(1.15); }
+}
+.loading-orbit {
+  animation: orbit-glow 2.4s ease-in-out infinite;
+}
