@@ -9,20 +9,6 @@ export function LandingNav() {
         <Link href="/" className="focus-ring rounded-md">
           <Logo />
         </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="#top" className="text-sm text-foreground-muted hover:text-foreground">
-            Início
-          </a>
-          <a href="#features" className="text-sm text-foreground-muted hover:text-foreground">
-            Recursos
-          </a>
-          <a href="#dashboard" className="text-sm text-foreground-muted hover:text-foreground">
-            Dashboard
-          </a>
-          <a href="#metrics" className="text-sm text-foreground-muted hover:text-foreground">
-            Métricas
-          </a>
-        </nav>
         <div className="flex items-center gap-2">
           <Link href="/login">
             <Button variant="ghost" size="sm">

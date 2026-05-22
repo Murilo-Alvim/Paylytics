@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SECTIONS = [
@@ -45,47 +46,59 @@ export function SectionNav() {
   return (
     <nav
       aria-label="Navegação por seção"
-      className="fixed right-4 top-1/2 z-30 hidden -translate-y-1/2 lg:block"
+      className="fixed right-4 top-1/2 z-30 hidden -translate-y-1/2 animate-slide-up lg:block"
+      style={{ animationDelay: "600ms", animationFillMode: "both" }}
     >
-      <ul className="flex flex-col gap-1 rounded-2xl border border-border bg-background-surface/70 p-2 backdrop-blur shadow-card">
-        {SECTIONS.map((s) => {
-          const isActive = active === s.id;
-          return (
-            <li key={s.id} className="group relative flex items-center">
-              <a
-                href={`#${s.id}`}
-                aria-label={s.label}
-                aria-current={isActive ? "true" : undefined}
-                className={cn(
-                  "flex h-7 w-7 items-center justify-center rounded-full transition-all focus-ring",
-                  isActive
-                    ? "bg-brand-500/15"
-                    : "hover:bg-foreground/[0.05]",
-                )}
-              >
-                <span
+      <div className="rounded-2xl border border-border bg-background-surface/85 p-3 backdrop-blur-xl shadow-card">
+        <div className="mb-3 flex items-center gap-2 px-2">
+          <Compass className="h-3.5 w-3.5 text-brand-300" />
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-foreground-muted">
+            Navegação
+          </p>
+        </div>
+
+        <ul className="flex flex-col gap-0.5">
+          {SECTIONS.map((s) => {
+            const isActive = active === s.id;
+            return (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "block rounded-full transition-all",
+                    "group flex items-center gap-3 rounded-lg px-2.5 py-1.5 text-xs transition-all focus-ring",
                     isActive
-                      ? "h-2.5 w-2.5 bg-brand-400 shadow-[0_0_10px_rgba(59,99,245,0.8)]"
-                      : "h-1.5 w-1.5 bg-foreground/30 group-hover:bg-foreground/60",
+                      ? "bg-brand-500/15 text-foreground"
+                      : "text-foreground-muted hover:bg-foreground/[0.04] hover:text-foreground",
                   )}
-                />
-              </a>
-              <span
-                className={cn(
-                  "pointer-events-none absolute right-10 whitespace-nowrap rounded-md border border-border bg-background-elevated/95 px-2.5 py-1 text-xs font-medium backdrop-blur transition-all",
-                  isActive
-                    ? "text-brand-200 opacity-0 group-hover:opacity-100"
-                    : "text-foreground opacity-0 group-hover:opacity-100",
-                )}
-              >
-                {s.label}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+                >
+                  <span className="relative flex h-3 w-3 items-center justify-center">
+                    {isActive && (
+                      <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-brand-400/60" />
+                    )}
+                    <span
+                      className={cn(
+                        "relative rounded-full transition-all",
+                        isActive
+                          ? "h-2 w-2 bg-brand-400 shadow-[0_0_8px_rgba(59,99,245,0.9)]"
+                          : "h-1.5 w-1.5 bg-foreground/30 group-hover:bg-foreground/60",
+                      )}
+                    />
+                  </span>
+                  <span
+                    className={cn(
+                      "font-medium",
+                      isActive && "text-brand-200",
+                    )}
+                  >
+                    {s.label}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </nav>
   );
 }
