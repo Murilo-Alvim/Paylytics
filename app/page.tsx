@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   BarChart3,
   CheckCircle2,
@@ -10,6 +11,7 @@ import {
   Lock,
   ShieldCheck,
   Sparkles,
+  TrendingUp,
   Webhook,
   Zap,
 } from "lucide-react";
@@ -81,7 +83,7 @@ const STEPS = [
 
 export default function LandingPage() {
   return (
-    <div className="relative overflow-hidden">
+    <div id="top" className="relative overflow-hidden">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-grid-fade"
@@ -95,28 +97,87 @@ export default function LandingPage() {
 
       <main>
         {/* HERO */}
-        <section className="relative mx-auto max-w-7xl px-4 pt-28 pb-16 text-center lg:px-6 lg:pt-36">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs font-medium text-brand-300 backdrop-blur">
+        <section className="relative mx-auto max-w-7xl px-4 pt-28 pb-20 text-center lg:px-6 lg:pt-36 lg:pb-28">
+          {/* Animated background orbs */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div className="orb-a absolute left-[8%] top-[10%] h-72 w-72 rounded-full bg-brand-500/25 blur-3xl" />
+            <div className="orb-b absolute right-[4%] top-[2%] h-80 w-80 rounded-full bg-info/20 blur-3xl" />
+            <div className="orb-c absolute left-[42%] top-[55%] h-64 w-64 rounded-full bg-brand-400/15 blur-3xl" />
+          </div>
+
+          {/* Floating live stat pills (lg+) */}
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-32 hidden lg:block">
+            <div className="relative mx-auto max-w-6xl">
+              <div className="float-a absolute left-2 top-6 flex items-center gap-2 rounded-2xl border border-border bg-background-surface/85 px-3 py-2 backdrop-blur shadow-card">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+                </span>
+                <span className="font-mono text-xs text-foreground-muted">
+                  +R$ 12.4k · <span className="text-success">aprovada</span>
+                </span>
+              </div>
+
+              <div className="float-b absolute right-4 top-2 flex items-center gap-2 rounded-2xl border border-info/30 bg-background-surface/85 px-3 py-2 backdrop-blur shadow-card">
+                <Zap className="h-3.5 w-3.5 text-info" />
+                <span className="font-mono text-xs text-foreground-muted">
+                  PIX <span className="font-semibold text-info">+23%</span>
+                </span>
+              </div>
+
+              <div className="float-c absolute right-8 top-44 flex items-center gap-2 rounded-2xl border border-success/30 bg-background-surface/85 px-3 py-2 backdrop-blur shadow-card">
+                <TrendingUp className="h-3.5 w-3.5 text-success" />
+                <span className="font-mono text-xs text-foreground-muted">
+                  aprovação <span className="font-semibold text-foreground">94.2%</span>
+                </span>
+              </div>
+
+              <div className="float-a absolute left-6 top-52 flex items-center gap-2 rounded-2xl border border-brand-500/30 bg-background-surface/85 px-3 py-2 backdrop-blur shadow-card">
+                <Sparkles className="h-3.5 w-3.5 text-brand-300" />
+                <span className="font-mono text-xs text-foreground-muted">
+                  insight detectado
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <span
+            className="animate-slide-up inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-brand-500/10 px-3 py-1.5 text-xs font-medium text-brand-200 backdrop-blur"
+            style={{ animationFillMode: "both" }}
+          >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-400" />
             </span>
             v2.0 · Insights por IA agora disponíveis
           </span>
-          <h1 className="mx-auto mt-7 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-7xl">
-            <span className="text-gradient">Real-time analytics</span>
+
+          <h1
+            className="animate-slide-up mx-auto mt-7 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-7xl"
+            style={{ animationDelay: "100ms", animationFillMode: "both" }}
+          >
+            <span className="hero-grad-text">Real-time analytics</span>
             <br />
             para o seu fluxo de pagamentos.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-foreground-muted sm:text-lg">
+
+          <p
+            className="animate-slide-up mx-auto mt-6 max-w-2xl text-base text-foreground-muted sm:text-lg"
+            style={{ animationDelay: "200ms", animationFillMode: "both" }}
+          >
             Paylytics conecta gateways, bancos e adquirentes em um único painel
             de operação financeira — feito para times fintech que precisam
             decidir rápido, sem planilhas paralelas.
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+
+          <div
+            className="animate-slide-up mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            style={{ animationDelay: "300ms", animationFillMode: "both" }}
+          >
             <Link href="/signup">
               <Button
                 size="lg"
+                className="cta-glow"
                 icon={<ArrowRight className="h-4 w-4" />}
                 iconPosition="right"
               >
@@ -129,7 +190,11 @@ export default function LandingPage() {
               </Button>
             </Link>
           </div>
-          <p className="mt-5 text-xs text-foreground-subtle">
+
+          <p
+            className="animate-slide-up mt-5 text-xs text-foreground-subtle"
+            style={{ animationDelay: "400ms", animationFillMode: "both" }}
+          >
             Sem cartão · Setup em &lt; 10 minutos
           </p>
 
@@ -695,6 +760,21 @@ export default function LandingPage() {
                 </Button>
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* BACK TO TOP */}
+        <section className="border-t border-border bg-background-surface/30 backdrop-blur">
+          <div className="mx-auto max-w-7xl px-4 py-12 text-center lg:px-6">
+            <a href="#top" className="inline-block">
+              <Button
+                variant="secondary"
+                size="lg"
+                icon={<ArrowUp className="h-4 w-4" />}
+              >
+                Voltar ao topo
+              </Button>
+            </a>
           </div>
         </section>
 

@@ -10,6 +10,9 @@ export function LandingNav() {
           <Logo />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
+          <a href="#top" className="text-sm text-foreground-muted hover:text-foreground">
+            Início
+          </a>
           <a href="#features" className="text-sm text-foreground-muted hover:text-foreground">
             Recursos
           </a>
@@ -18,9 +21,6 @@ export function LandingNav() {
           </a>
           <a href="#metrics" className="text-sm text-foreground-muted hover:text-foreground">
             Métricas
-          </a>
-          <a href="#cta" className="text-sm text-foreground-muted hover:text-foreground">
-            Começar
           </a>
         </nav>
         <div className="flex items-center gap-2">
